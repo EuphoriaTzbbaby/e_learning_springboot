@@ -30,7 +30,7 @@ jobs:
           key: ${{ secrets.SERVER_SSH_KEY }}  # 云服务器生成的私钥
           port: 22 # 可选，自定义SSH端口
           source: target/e_learning-0.0.1-SNAPSHOT.jar
-          target: /var/www/html/springbootAndVue/e_learning/
+          target: /var/www/html/springbootAndVue/e_learning
 
       - name: Build and run Docker container on server
         uses: appleboy/ssh-action@v0.1.7

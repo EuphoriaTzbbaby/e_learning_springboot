@@ -27,7 +27,7 @@ jobs:
         with:
           host: 47.101.42.177  # 建议将主机信息也存入Secrets
           username: root # 建议使用非root用户
-          key: ${{ secrets.SERVER_SSH_KEY }}  # 云服务器生成的私钥
+          key: ${{ secrets.SSH_PRIVATE_KEY }}  # 云服务器生成的私钥
           port: 22 # 可选，自定义SSH端口
           source: target/e_learning-0.0.1-SNAPSHOT.jar
           target: /var/www/html/springbootAndVue/e_learning
@@ -37,7 +37,7 @@ jobs:
         with:
           host: 47.101.42.177
           username: root2
-          key: ${{ secrets.SERVER_SSH_KEY }}
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
           port: 22
           script: |
             cd /var/www/html/springbootAndVue/e_learning

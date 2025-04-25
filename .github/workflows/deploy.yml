@@ -25,8 +25,8 @@ jobs:
       - name: Upload JAR to server
         uses: appleboy/scp-action@v0.1.4
         with:
-          host: ${{ secrets.SERVER_HOST }}
-          username: ${{ secrets.SERVER_USER }}
+          host: 47.101.42.177
+          username: root
           key: ${{ secrets.SERVER_SSH_KEY }}
           source: target/e_learning-0.0.1-SNAPSHOT.jar
           target: /var/www/html/springbootAndVue/e_learning/
@@ -34,8 +34,8 @@ jobs:
       - name: Build and run Docker container on server
         uses: appleboy/ssh-action@v0.1.7
         with:
-          host: ${{ secrets.SERVER_HOST }}
-          username: ${{ secrets.SERVER_USER }}
+          host: 47.101.42.177
+          username: root
           key: ${{ secrets.SERVER_SSH_KEY }}
           script: |
             cd /var/www/html/springbootAndVue/e_learning

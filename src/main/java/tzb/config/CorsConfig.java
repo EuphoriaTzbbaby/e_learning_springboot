@@ -11,7 +11,7 @@ public class CorsConfig implements WebMvcConfigurer {
     @Override
     public void addCorsMappings(CorsRegistry registry) {
         registry.addMapping("/**")
-                .allowedOrigins("http://47.101.42.177:9999", "http://localhost:5173", "http://localhost:3000") // 允许的跨域来源
+                .allowedOrigins("http://cwwdka.com:9999", "http://47.101.42.177:9999", "http://localhost:5173", "http://localhost:3000") // 允许的跨域来源
                 .allowedMethods("GET", "POST", "PUT", "DELETE")
                 .allowCredentials(true)
                 .maxAge(3600);

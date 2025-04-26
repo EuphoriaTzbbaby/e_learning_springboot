@@ -45,4 +45,4 @@ jobs:
             docker build -t sb-e_learning .
             docker stop spring-e_learning || true
             docker rm spring-e_learning || true
-            docker run -d --name spring-e_learning -p 7777:7777 --network blog sb-e_learning
+            docker run -d --name spring-e_learning -p 7788:7788 --network blog sb-e_learning

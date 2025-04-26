@@ -1,5 +1,5 @@
 server:
-  port: 6666
+  port: 7788
   servlet:
     context-path: /tzb
 spring:
@@ -39,4 +39,11 @@ logging:
         type:
           descriptor:
             sql: trace
+
+oss:
+  endpoint: ${OSS_ENDPOINT}
+  accessKeyId: ${OSS_ACCESSKEYID}
+  accessKeySecret: ${OSS_ACCESSKEYSECRET}
+  bucketName: ${OSS_BUCKETNAME}
+
 

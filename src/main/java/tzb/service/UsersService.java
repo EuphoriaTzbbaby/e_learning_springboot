@@ -5,10 +5,10 @@ import tzb.pojo.Users;
 import java.util.List;
 
 public interface UsersService {
-    Users findById(long id);
-    List<Users> findAll();
+    Users selectById(long id);
+    List<Users> selectAll();
     int insert(Users user);
-    int update(Users user);
+    int updateById(Users user);
     int deleteById(long id);
     int checkLogin(Users users);
 }

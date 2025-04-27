@@ -15,13 +15,13 @@ public class UsersServiceImpl implements UsersService {
     private UsersMapper usersMapper;
 
     @Override
-    public Users findById(long id) {
-        return usersMapper.findById(id);
+    public Users selectById(long id) {
+        return usersMapper.selectById(id);
     }
 
     @Override
-    public List<Users> findAll() {
-        return usersMapper.findAll();
+    public List<Users> selectAll() {
+        return usersMapper.selectAll();
     }
 
     @Override
@@ -30,8 +30,8 @@ public class UsersServiceImpl implements UsersService {
     }
 
     @Override
-    public int update(Users user) {
-        return usersMapper.update(user);
+    public int updateById(Users user) {
+        return usersMapper.updateById(user);
     }
 
     @Override

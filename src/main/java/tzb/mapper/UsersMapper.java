@@ -9,10 +9,10 @@ import java.util.List;
 public interface UsersMapper {
 
     @Select("SELECT * FROM users WHERE id = #{id}")
-    Users findById(@Param("id") long id);
+    Users selectById(@Param("id") long id);
 
     @Select("SELECT * FROM users")
-    List<Users> findAll();
+    List<Users> selectAll();
     @Select("select count(*) from users where email = #{email} and password = #{password} and role = #{role}")
     int checkLogin(Users user);
 
@@ -24,7 +24,7 @@ public interface UsersMapper {
     @Update("UPDATE users SET username = #{username}, password = #{password}, " +
             "role = #{role}, name = #{name}, email = #{email}, created_at = #{createdAt}, avatar = #{avatar}" +
             "WHERE id = #{id}")
-    int update(Users user);
+    int updateById(Users user);
 
     @Delete("DELETE FROM users WHERE id = #{id}")
     int deleteById(@Param("id") long id);

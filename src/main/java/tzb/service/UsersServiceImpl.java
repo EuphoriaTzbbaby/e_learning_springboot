@@ -24,6 +24,7 @@ public class UsersServiceImpl implements UsersService {
         return usersMapper.selectAll();
     }
 
+
     @Override
     public int insert(Users user) {
         return usersMapper.insert(user);

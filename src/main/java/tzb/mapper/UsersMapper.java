@@ -15,7 +15,6 @@ public interface UsersMapper {
     List<Users> selectAll();
     @Select("select count(*) from users where email = #{email} and password = #{password} and role = #{role}")
     int checkLogin(Users user);
-
     @Insert("INSERT INTO users (username, password, role, name, email, created_at, avatar) " +
             "VALUES (#{username}, #{password}, #{role}, #{name}, #{email}, #{createdAt}, #{avatar})")
     @Options(useGeneratedKeys = true, keyProperty = "id")

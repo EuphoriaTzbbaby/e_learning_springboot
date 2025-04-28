@@ -53,4 +53,5 @@ public class UsersTests {
         user.setAvatar("avatar.jpg");
         usersService.updateById(user);
     }
+
 }

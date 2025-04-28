@@ -9,7 +9,7 @@ import tzb.service.ClassesService;
 public class ClassedDelete {
     @Autowired
     private ClassesService classesService;
-    @PutMapping("/delete/{id}")
+    @DeleteMapping("/delete/{id}")
     public String deleteClasses(@PathVariable long id) {
         int result = classesService.deleteById(id);
         return result == 1 ? "班级删除成功" : "班级删除失败";

@@ -61,6 +61,59 @@ public class UsersController {
         }
         return studentsAndTeachers;
     }
+    @GetMapping("/select/{selectVal}/{id}")
+    public List<Users> selectBySelectVal(@PathVariable String selectVal, @PathVariable long id) {
+        List<Users> users = usersService.selectAll();
+        HashMap<Long, Users> mp = new HashMap<Long, Users>();
+        for(Users user : users){
+            mp.put(user.getId(), user);
+        }
+        List<Users> studentsAndTeachers = new ArrayList<>();
+        List<ClassStudents> classStudents = classStudentsService.selectByClassId(id);
+        List<ClassTeachers> classTeachers = classTeachersService.selectByClassId(id);
+        for(ClassStudents classStudent:classStudents){
+            studentsAndTeachers.add(mp.get(classStudent.getStudentId()));
+        }
+        for(ClassTeachers classTeacher:classTeachers){
+            studentsAndTeachers.add(mp.get(classTeacher.getTeacherId()));
+        }
+        List<Users> ans = new ArrayList<>();
+        Match match = new Match();
+        for(Users user : studentsAndTeachers){
+            if(match.checkContainSubsequence(String.valueOf(user.getId()), selectVal)) {
+                ans.add(user);
+                continue;
+            }
+            if(match.checkContainSubsequence(user.getUsername(), selectVal)) {
+                ans.add(user);
+                continue;
+            }
+            if(match.checkContainSubsequence(user.getEmail(), selectVal)) {
+                ans.add(user);
+                continue;
+            }
+            if(match.checkContainSubsequence(user.getPassword(), selectVal)) {
+                ans.add(user);
+                continue;
+            }
+            if(match.checkContainSubsequence(user.getRole(), selectVal)) {
+                ans.add(user);
+                continue;
+            }
+            if(match.checkContainSubsequence(user.getAvatar(), selectVal)) {
+                ans.add(user);
+                continue;
+            }
+            if(match.checkContainSubsequence(user.getName(), selectVal)) {
+                ans.add(user);
+                continue;
+            }
+            if(match.checkContainSubsequence(String.valueOf(user.getCreatedAt()), selectVal)) {
+                ans.add(user);
+            }
+        }
+        return ans;
+    }
     @GetMapping("/select/{selectVal}")
     public List<Users> selectBySelectVal(@PathVariable String selectVal) {
         List<Users> users = usersService.selectAll();

@@ -23,7 +23,7 @@ public class ClassesSelect {
     public List<Classes> selectAll() {
         return classesServiceImpl.selectAll();
     }
-    @GetMapping("/select/{id}")
+    @GetMapping("/selectClass/{id}")
     public Classes selectById(long id) {
         return classesServiceImpl.selectById(id);
     }

@@ -3,12 +3,18 @@ package tzb.controller.users;
 import com.fasterxml.jackson.databind.deser.DataFormatReaders;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+import tzb.pojo.ClassStudents;
+import tzb.pojo.ClassTeachers;
 import tzb.pojo.Users;
+import tzb.service.ClassStudentsService;
+import tzb.service.ClassTeachersService;
 import tzb.service.UsersService;
 import utils.Match;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @RestController
 @RequestMapping("/users")
@@ -16,7 +22,10 @@ public class UsersController {
 
     @Autowired
     private UsersService usersService;
-
+    @Autowired
+    private ClassTeachersService classTeachersService;
+    @Autowired
+    private ClassStudentsService classStudentsService;
     @PostMapping("/check")
     public boolean checkLogin(@RequestBody Users user) {
         System.out.println("check");
@@ -34,7 +43,24 @@ public class UsersController {
     public List<Users> getAllUsers() {
         return usersService.selectAll();
     }
-
+    @GetMapping("/selectStudentsAndTeachers/{id}")
+    public List<Users> selectStudentsAndTeachers(@PathVariable long id) {
+        List<Users> users = usersService.selectAll();
+        HashMap<Long, Users> mp = new HashMap<Long, Users>();
+        for(Users user : users){
+            mp.put(user.getId(), user);
+        }
+        List<Users> studentsAndTeachers = new ArrayList<>();
+        List<ClassStudents> classStudents = classStudentsService.selectByClassId(id);
+        List<ClassTeachers> classTeachers = classTeachersService.selectByClassId(id);
+        for(ClassStudents classStudent:classStudents){
+            studentsAndTeachers.add(mp.get(classStudent.getStudentId()));
+        }
+        for(ClassTeachers classTeacher:classTeachers){
+            studentsAndTeachers.add(mp.get(classTeacher.getTeacherId()));
+        }
+        return studentsAndTeachers;
+    }
     @GetMapping("/select/{selectVal}")
     public List<Users> selectBySelectVal(@PathVariable String selectVal) {
         List<Users> users = usersService.selectAll();

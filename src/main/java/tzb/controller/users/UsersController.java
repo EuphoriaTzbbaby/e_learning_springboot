@@ -77,6 +77,7 @@ public class UsersController {
         for(ClassTeachers classTeacher:classTeachers){
             studentsAndTeachers.add(mp.get(classTeacher.getTeacherId()));
         }
+        System.out.println(studentsAndTeachers.size());
         List<Users> ans = new ArrayList<>();
         Match match = new Match();
         for(Users user : studentsAndTeachers){

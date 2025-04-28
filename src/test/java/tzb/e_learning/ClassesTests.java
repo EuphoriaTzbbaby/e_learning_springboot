@@ -21,6 +21,7 @@ public class ClassesTests {
             classes.setName("九(" + String.valueOf(i) + ")");
             classes.setCreatedAt(Timestamp.valueOf(LocalDateTime.now()));
             classesServiceImpl.insert(classes);
+            System.out.println(666);
         }
     }
 

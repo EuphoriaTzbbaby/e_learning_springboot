@@ -10,18 +10,18 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/video")
+@RequestMapping("/video/select")
 public class VideoSelectController {
 
     @Autowired
     private VideoService videoService;
 
-    @GetMapping("/get/{id}")
+    @GetMapping("/{id}")
     public Video getById(@PathVariable long id) {
         return videoService.getById(id);
     }
 
-    @GetMapping("/list")
+    @GetMapping("/all")
     public List<Video> getAll() {
         return videoService.getAll();
     }

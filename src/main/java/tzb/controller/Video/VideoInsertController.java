@@ -13,7 +13,7 @@ public class VideoInsertController {
     @Autowired
     private VideoService videoService;
 
-    @PostMapping("/add")
+    @PostMapping("/insert")
     public int add(@RequestBody Video video) {
         return videoService.add(video);
     }

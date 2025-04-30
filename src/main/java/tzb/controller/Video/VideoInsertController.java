@@ -15,6 +15,7 @@ public class VideoInsertController {
 
     @PostMapping("/insert")
     public int add(@RequestBody Video video) {
+        System.out.println(video);
         return videoService.add(video);
     }
 }

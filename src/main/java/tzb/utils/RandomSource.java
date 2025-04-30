@@ -1,4 +1,4 @@
-package utils;
+package tzb.utils;
 
 import java.util.ArrayList;
 import java.util.Random;

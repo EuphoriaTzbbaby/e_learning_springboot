@@ -40,7 +40,7 @@ public class UsersServiceImpl implements UsersService {
         return usersMapper.deleteById(id);
     }
     @Override
-    public int checkLogin(Users users) {
+    public Users checkLogin(Users users) {
         return usersMapper.checkLogin(users);
     }
 }

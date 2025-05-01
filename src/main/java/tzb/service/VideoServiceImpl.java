@@ -19,6 +19,10 @@ public class VideoServiceImpl implements VideoService {
     }
 
     @Override
+    public List<Video> selectByAlbumId(long id) {
+        return videoMapper.selectByAlbumId(id);
+    }
+    @Override
     public List<Video> getAll() {
         return videoMapper.selectAll();
     }

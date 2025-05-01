@@ -12,7 +12,8 @@ public interface VideoMapper {
 
     @Select("SELECT * FROM video")
     List<Video> selectAll();
-
+    @Select("select * from video where album_id = #{id}")
+    List<Video> selectByAlbumId(long id);
     @Insert("INSERT INTO video(album_id, title, oss_key, video_url, duration, sort_order, create_time) VALUES(#{albumId}, #{title}, #{ossKey}, #{videoUrl}, #{duration}, #{sortOrder}, #{createTime})")
     @Options(useGeneratedKeys = true, keyProperty = "id")
     int insert(Video video);

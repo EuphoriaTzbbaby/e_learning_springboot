@@ -10,5 +10,5 @@ public interface UsersService {
     int insert(Users user);
     int updateById(Users user);
     int deleteById(long id);
-    int checkLogin(Users users);
+    Users checkLogin(Users users);
 }

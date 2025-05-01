@@ -1,5 +1,6 @@
 package tzb.controller.users;
 
+import org.apache.catalina.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import tzb.pojo.ClassStudents;
@@ -25,12 +26,12 @@ public class UsersController {
     @Autowired
     private ClassStudentsService classStudentsService;
     @PostMapping("/check")
-    public boolean checkLogin(@RequestBody Users user) {
+    public Users checkLogin(@RequestBody Users user) {
         System.out.println("check");
         System.out.println(user.getEmail());
         System.out.println(user.getPassword());
         System.out.println(user.getRole());
-        return usersService.checkLogin(user) > 0;
+        return usersService.checkLogin(user);
     }
     @GetMapping("/{id}")
     public Users getUserById(@PathVariable long id) {

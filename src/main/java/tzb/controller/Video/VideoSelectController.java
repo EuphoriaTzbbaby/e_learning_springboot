@@ -20,6 +20,10 @@ public class VideoSelectController {
     public Video getById(@PathVariable long id) {
         return videoService.getById(id);
     }
+    @GetMapping("/byAlbumId/{id}")
+    public List<Video> getByAlbumId(@PathVariable long id) {
+        return videoService.selectByAlbumId(id);
+    }
 
     @GetMapping("/all")
     public List<Video> getAll() {

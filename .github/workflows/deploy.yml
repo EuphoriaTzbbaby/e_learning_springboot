@@ -1,0 +1,48 @@
+name: Deploy Spring Boot Application
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Set up JDK 17
+        uses: actions/setup-java@v3
+        with:
+          distribution: 'temurin'
+          java-version: 17
+
+      - name: Build Maven package (skip tests)
+        run: mvn clean package -DskipTests
+
+      - name: Upload JAR to server
+        uses: appleboy/scp-action@v0.1.4
+        with:
+          host: 47.101.42.177
+          username: root
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
+          port: 22
+          source: target/e_learning-0.0.1-SNAPSHOT.jar
+          target: /var/www/html/springbootAndVue/e_learning
+          strip_components: 1  # ✅ 就是这句去掉 target 文件夹
+
+      - name: Build and run Docker container on server
+        uses: appleboy/ssh-action@v0.1.7
+        with:
+          host: 47.101.42.177
+          username: root
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
+          port: 22
+          script: |
+            cd /var/www/html/springbootAndVue/e_learning
+            docker build -t sb-e_learning .
+            docker stop spring-e_learning || true
+            docker rm spring-e_learning || true
+            docker run -d --name spring-e_learning -p 7788:7788 --network blog sb-e_learning

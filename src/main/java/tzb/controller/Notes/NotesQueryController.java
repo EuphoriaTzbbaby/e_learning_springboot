@@ -24,7 +24,7 @@ public class NotesQueryController {
         return ResponseEntity.ok(notes);
     }
     @GetMapping("/selectVal/{selectVal}")
-    public ResponseEntity<List<Notes>> getCommentsBySelectVal(@PathVariable("selectVal") String selectVal) {
+    public ResponseEntity<List<Notes>> getNotesBySelectVal(@PathVariable("selectVal") String selectVal) {
         List<Notes> res = notesService.findAll();
         List<Notes> ans = new ArrayList<>();
         Match match = new Match();

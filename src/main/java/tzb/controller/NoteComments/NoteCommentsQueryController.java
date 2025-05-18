@@ -5,7 +5,9 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import tzb.pojo.NoteComments;
 import tzb.service.NoteCommentsService;
+import tzb.utils.Match;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @RestController
@@ -18,6 +20,55 @@ public class NoteCommentsQueryController {
     @GetMapping("/all")
     public ResponseEntity<List<NoteComments>> getAllComments() {
         List<NoteComments> comments = noteCommentsService.findAll();
+        return ResponseEntity.ok(comments);
+    }
+
+    @GetMapping("/selectVal/{selectVal}")
+    public ResponseEntity<List<NoteComments>> getCommentsBySelectVal(@PathVariable("selectVal") String selectVal) {
+        List<NoteComments> res = noteCommentsService.findAll();
+        List<NoteComments> comments = new ArrayList<>();
+        Match match = new Match();
+        for(NoteComments noteComments : res) {
+            if(match.checkContainSubsequence(noteComments.getCommentId(), selectVal)) {
+                comments.add(noteComments);
+                continue;
+            }
+            if(match.checkContainSubsequence(noteComments.getGender(), selectVal)) {
+                comments.add(noteComments);
+                continue;
+            }
+            if(match.checkContainSubsequence(noteComments.getNoteId(), selectVal)) {
+                comments.add(noteComments);
+                continue;
+            }
+            if(match.checkContainSubsequence(noteComments.getContent(), selectVal)) {
+                comments.add(noteComments);
+                continue;
+            }
+            if(match.checkContainSubsequence(noteComments.getLevel(), selectVal)) {
+                comments.add(noteComments);
+                continue;
+            }
+            if(match.checkContainSubsequence(noteComments.getNickname(), selectVal)) {
+                comments.add(noteComments);
+                continue;
+            }
+            if(match.checkContainSubsequence(noteComments.getIpLocation(), selectVal)) {
+                comments.add(noteComments);
+                continue;
+            }
+            if(match.checkContainSubsequence(String.valueOf(noteComments.getCreatedAt()), selectVal)) {
+                comments.add(noteComments);
+                continue;
+            }
+            if(match.checkContainSubsequence(String.valueOf(noteComments.getLikeCount()), selectVal)) {
+                comments.add(noteComments);
+                continue;
+            }
+            if(match.checkContainSubsequence(noteComments.getUserId(), selectVal)) {
+                comments.add(noteComments);
+            }
+        }
         return ResponseEntity.ok(comments);
     }
 

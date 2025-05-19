@@ -54,7 +54,11 @@ public class NoteCommentsServiceImpl implements NoteCommentsService {
         if (noteComments.getLikeCount() <= 0) {
             noteComments.setLikeCount(0);
         }
-        return noteCommentsMapper.insert(noteComments) > 0;
+        return noteCommentsMapper.save(noteComments) > 0;
+    }
+    @Override
+    public boolean saveBatch(List<NoteComments> comments) {
+        return noteCommentsMapper.saveBatch(comments) > 0;
     }
 
     @Override

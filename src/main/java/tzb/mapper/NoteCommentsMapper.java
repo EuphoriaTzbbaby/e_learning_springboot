@@ -28,7 +28,7 @@ public interface NoteCommentsMapper {
     @Options(useGeneratedKeys = true, keyProperty = "id")
     int save(NoteComments noteComments);
 
-//    @InsertProvider(type = NoteCommentsSqlProvider.class, method = "insertBatch")
+    @InsertProvider(type = NoteCommentsSqlProvider.class, method = "insertBatch")
     int saveBatch(@Param("comments") List<NoteComments> comments);
 
     @Update("UPDATE note_comments SET content = #{content}, like_count = #{likeCount}, level = #{level} WHERE id = #{id}")

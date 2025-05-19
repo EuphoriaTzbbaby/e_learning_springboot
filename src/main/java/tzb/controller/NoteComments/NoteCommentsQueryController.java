@@ -29,43 +29,43 @@ public class NoteCommentsQueryController {
         List<NoteComments> comments = new ArrayList<>();
         Match match = new Match();
         for(NoteComments noteComments : res) {
-            if(match.checkContainSubsequence(noteComments.getCommentId(), selectVal)) {
+            if(match.checkContainSubsequence(selectVal, noteComments.getCommentId())) {
                 comments.add(noteComments);
                 continue;
             }
-            if(match.checkContainSubsequence(noteComments.getGender(), selectVal)) {
+            if(match.checkContainSubsequence(selectVal, noteComments.getGender())) {
                 comments.add(noteComments);
                 continue;
             }
-            if(match.checkContainSubsequence(noteComments.getNoteId(), selectVal)) {
+            if(match.checkContainSubsequence(selectVal, noteComments.getNoteId())) {
                 comments.add(noteComments);
                 continue;
             }
-            if(match.checkContainSubsequence(noteComments.getContent(), selectVal)) {
+            if(match.checkContainSubsequence(selectVal, noteComments.getContent())) {
                 comments.add(noteComments);
                 continue;
             }
-            if(match.checkContainSubsequence(noteComments.getLevel(), selectVal)) {
+            if(match.checkContainSubsequence(selectVal, noteComments.getLevel())) {
                 comments.add(noteComments);
                 continue;
             }
-            if(match.checkContainSubsequence(noteComments.getNickname(), selectVal)) {
+            if(match.checkContainSubsequence(selectVal, noteComments.getNickname())) {
                 comments.add(noteComments);
                 continue;
             }
-            if(match.checkContainSubsequence(noteComments.getIpLocation(), selectVal)) {
+            if(match.checkContainSubsequence(selectVal, noteComments.getIpLocation())) {
                 comments.add(noteComments);
                 continue;
             }
-            if(match.checkContainSubsequence(String.valueOf(noteComments.getCreatedAt()), selectVal)) {
+            if(match.checkContainSubsequence(selectVal, String.valueOf(noteComments.getCreatedAt()))) {
                 comments.add(noteComments);
                 continue;
             }
-            if(match.checkContainSubsequence(String.valueOf(noteComments.getLikeCount()), selectVal)) {
+            if(match.checkContainSubsequence(selectVal, String.valueOf(noteComments.getLikeCount()))) {
                 comments.add(noteComments);
                 continue;
             }
-            if(match.checkContainSubsequence(noteComments.getUserId(), selectVal)) {
+            if(match.checkContainSubsequence(selectVal, noteComments.getUserId())) {
                 comments.add(noteComments);
             }
         }

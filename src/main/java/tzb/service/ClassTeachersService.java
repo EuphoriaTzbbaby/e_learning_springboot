@@ -7,4 +7,5 @@ import java.util.List;
 public interface ClassTeachersService {
     Integer insert(ClassTeachers classTeachers);
     List<ClassTeachers> selectByClassId(long id);
+    List<ClassTeachers> selectByTeacherId(long teacherId);
 }

@@ -13,4 +13,6 @@ public interface ClassTeachersMapper {
     Integer insert(ClassTeachers classteachers);
     @Select("select * from class_teachers where class_Id = #{classId}")
     List<ClassTeachers> selectByClassId(long classId);
+    @Select("select * from class_teachers where teacher_Id = #{teacherId}")
+    List<ClassTeachers> selectByTeacherId(long teacherId);
 }

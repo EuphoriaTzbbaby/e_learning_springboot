@@ -1,4 +1,4 @@
-package com.sample;
+package tzb.pojo;
 
 
 public class CommentSentimentAnalysis {

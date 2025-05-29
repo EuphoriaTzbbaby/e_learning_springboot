@@ -19,4 +19,8 @@ public class ClassTeachersServiceImpl implements ClassTeachersService {
     public List<ClassTeachers> selectByClassId(long classId) {
         return classTeachersMapper.selectByClassId(classId);
     }
+    @Override
+    public List<ClassTeachers> selectByTeacherId(long teacherId) {
+        return classTeachersMapper.selectByTeacherId(teacherId);
+    }
 }

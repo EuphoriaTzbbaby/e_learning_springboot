@@ -8,7 +8,7 @@ mvn clean package -DskipTests
 echo "Uploading JAR file to server..."
 scp target/e_learning-0.0.1-SNAPSHOT.jar root@47.101.42.177:/var/www/html/springbootAndVue/e_learning
 
-# 3. 登录到服务器并构建 Docker 镜像
+# 3. 登录到服务器并构建 Docker 镜像 666
 echo "Building Docker image on server..."
 ssh root@47.101.42.177 << EOF
   cd /var/www/html/springbootAndVue/e_learning

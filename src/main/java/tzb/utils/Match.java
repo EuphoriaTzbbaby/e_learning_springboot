@@ -8,8 +8,8 @@ public class Match {
             if(s.charAt(i) == t.charAt(j)) {
                 i += 1;
                 j += 1;
-            } else j += 1;
+            } else i += 1;
         }
-        return i >= m;
+        return j >= n;
     };
 }

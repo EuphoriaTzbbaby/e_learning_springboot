@@ -28,24 +28,25 @@ public class NotesQueryController {
         List<Notes> res = notesService.findAll();
         List<Notes> ans = new ArrayList<>();
         Match match = new Match();
+        System.out.println("cnm" + selectVal);
         for(Notes notes : res) {
-            if(match.checkContainSubsequence(selectVal, notes.getTitle())) {
+            if(match.checkContainSubsequence(notes.getTitle(), selectVal)) {
                 ans.add(notes);
                 continue;
             }
-            if(match.checkContainSubsequence(selectVal, notes.getNoteId())) {
+            if(match.checkContainSubsequence(notes.getNoteId(), selectVal)) {
                 ans.add(notes);
                 continue;
             }
-            if(match.checkContainSubsequence(selectVal, notes.getUrl())) {
+            if(match.checkContainSubsequence(notes.getUrl(), selectVal)) {
                 ans.add(notes);
                 continue;
             }
-            if(match.checkContainSubsequence(selectVal, String.valueOf(notes.getId()))) {
+            if(match.checkContainSubsequence(String.valueOf(notes.getId()), selectVal)) {
                 ans.add(notes);
                 continue;
             }
-            if(match.checkContainSubsequence(selectVal, String.valueOf(notes.getCreatedAt()))) {
+            if(match.checkContainSubsequence(String.valueOf(notes.getCreatedAt()), selectVal)) {
                 ans.add(notes);
             }
         }

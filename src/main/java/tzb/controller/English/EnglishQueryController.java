@@ -27,6 +27,7 @@ public class EnglishQueryController {
         List<English> englishList = new ArrayList<>();
         for(English english : list) {
             Object[] nums = {
+                    english.getTranslation(),
                     english.getComment(),
                     english.getContent(),
                     String.valueOf(english.getEgId()),

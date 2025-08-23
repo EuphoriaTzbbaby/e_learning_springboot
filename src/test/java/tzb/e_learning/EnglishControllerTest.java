@@ -8,9 +8,14 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
 import tzb.pojo.English;
+import tzb.service.EnglishService;
 
 import java.sql.Timestamp;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
@@ -26,6 +31,34 @@ public class EnglishControllerTest {
     @Autowired
     private ObjectMapper objectMapper;
 
+    @Autowired
+    private EnglishService englishService;
+    @Test
+    public void cnm() {
+        List<English> englishList = englishService.selectAll();
+// 确保map已初始化且不为null
+        Map<Character, Integer> map = new HashMap<>();
+
+        for(English english : englishList) {
+            if(english != null && english.getIsDeleted() == 0 &&
+                    (english.getCoreKey().equals("单词") || english.getCoreKey().equals("辨析"))) {
+
+                String content = english.getContent();
+                if(content != null && !content.isEmpty()) {
+                    char firstChar = content.charAt(0);
+//                    if('磨' == content.charAt(0)) {
+//                        System.out.println(content);
+//                    }
+                    // 使用getOrDefault避免NullPointerException
+                    map.put(firstChar, map.getOrDefault(firstChar, 0) + 1);
+                }
+            }
+        }
+        map.entrySet().stream()
+                .sorted(Map.Entry.comparingByValue()) // 按值升序排序
+                .forEach(entry -> System.out.println(entry.getKey() + ": " + entry.getValue()));
+        System.out.println(map);
+    }
     @Test
     public void testAddEnglish() throws Exception {
         English english = new English();

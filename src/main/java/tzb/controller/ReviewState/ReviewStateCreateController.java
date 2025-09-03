@@ -6,13 +6,12 @@ import tzb.pojo.ReviewState;
 import tzb.service.ReviewStateService;
 
 @RestController
-@RequestMapping("/reviewState")
+@RequestMapping("/reviewState/add")
 public class ReviewStateCreateController {
 
     @Autowired
     private ReviewStateService reviewStateService;
-
-    @PostMapping
+    @PostMapping()
     public String addReviewState(@RequestBody ReviewState reviewState) {
         int rows = reviewStateService.addReviewState(reviewState);
         return rows > 0 ? "Insert success" : "Insert failed";

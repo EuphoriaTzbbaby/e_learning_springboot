@@ -6,7 +6,7 @@ import tzb.pojo.ReviewState;
 import tzb.service.ReviewStateService;
 
 @RestController
-@RequestMapping("/reviewState")
+@RequestMapping("/reviewState/update")
 public class ReviewStateUpdateController {
 
     @Autowired

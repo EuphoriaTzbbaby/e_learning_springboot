@@ -50,7 +50,7 @@ public class EnglishControllerTest {
 
 
             // 转成 UTC 时间，存入 TIMESTAMP
-            Timestamp s = Timestamp.valueOf(nowShanghai);
+            Timestamp s = Timestamp.valueOf(nowShanghai.plusHours(8));
 
 //            System.out.println(s); // 输出原始 Timestamp
 

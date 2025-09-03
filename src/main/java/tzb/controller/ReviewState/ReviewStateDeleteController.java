@@ -5,7 +5,7 @@ import org.springframework.web.bind.annotation.*;
 import tzb.service.ReviewStateService;
 
 @RestController
-@RequestMapping("/reviewState")
+@RequestMapping("/reviewState/delete")
 public class ReviewStateDeleteController {
 
     @Autowired

@@ -8,7 +8,7 @@ import java.util.List;
 public interface ReviewStateMapper {
 
     @Insert("INSERT INTO review_state(userId, egId, interval_days, strength, difficulty, forgetting_idx, repetitions, last_review, next_review, createDate, updateDate) " +
-            "VALUES(#{userId}, #{egId}, #{intervalDays}, #{strength}, #{difficulty}, #{forgettingIdx}, #{repetitions}, #{lastReview}, #{nextReview}, NOW(), NOW())")
+            "VALUES(#{userId}, #{egId}, #{intervalDays}, #{strength}, #{difficulty}, #{forgettingIdx}, #{repetitions}, #{lastReview}, #{nextReview}, #{createDate}, #{updateDate})")
     @Options(useGeneratedKeys = true, keyProperty = "id")
     int insert(ReviewState reviewState);
 

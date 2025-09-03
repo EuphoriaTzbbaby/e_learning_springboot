@@ -1,4 +1,4 @@
-package tzb.controller;
+package tzb.controller.ReviewState;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -8,7 +8,7 @@ import tzb.service.ReviewStateService;
 import java.util.List;
 
 @RestController
-@RequestMapping("/reviewState")
+@RequestMapping("/reviewState/read")
 public class ReviewStateReadController {
 
     @Autowired

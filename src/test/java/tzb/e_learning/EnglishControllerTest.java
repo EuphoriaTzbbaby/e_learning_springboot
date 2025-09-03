@@ -8,15 +8,18 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
 import tzb.pojo.English;
+import tzb.pojo.ReviewState;
 import tzb.service.EnglishService;
+import tzb.service.ReviewStateService;
+import tzb.utils.ShiftDate;
 
 import java.sql.Timestamp;
 import java.time.LocalDateTime;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.time.ZoneId;
+import java.time.ZonedDateTime;
+import java.util.*;
 
+import static java.util.Collections.min;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
@@ -33,6 +36,45 @@ public class EnglishControllerTest {
 
     @Autowired
     private EnglishService englishService;
+
+    @Autowired
+    private ReviewStateService reviewStateService;
+    @Test
+    public void fuck() {
+        List<English> englishList = englishService.selectAll();
+        for(English english : englishList) {
+            if(english.getIsDeleted() == 1) {
+                continue;
+            }
+            LocalDateTime nowShanghai = LocalDateTime.now(ZoneId.of("Asia/Shanghai"));
+
+
+            // 转成 UTC 时间，存入 TIMESTAMP
+            Timestamp s = Timestamp.valueOf(nowShanghai);
+
+//            System.out.println(s); // 输出原始 Timestamp
+
+
+            ReviewState reviewState = new ReviewState();
+            reviewState.setUserId(english.getUserId());
+            reviewState.setEgId(english.getEgId());
+            reviewState.setIntervalDays(0);
+            reviewState.setStrength(0);
+            long l = english.getContent().length();
+            double v = (double) l / 10 * 0.1;
+            v = Math.min(v, 1.0);
+            reviewState.setDifficulty(v);
+            reviewState.setForgettingIdx(0);
+            reviewState.setRepetitions(0);
+            reviewState.setLastReview(s);
+            reviewState.setNextReview(s);
+            reviewState.setCreateDate(s);
+            reviewState.setUpdateDate(s);
+            reviewStateService.addReviewState(reviewState);
+//            break;
+        }
+    }
+
     @Test
     public void cnm() {
         List<English> englishList = englishService.selectAll();

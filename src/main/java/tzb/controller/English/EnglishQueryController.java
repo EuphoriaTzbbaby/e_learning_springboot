@@ -5,6 +5,7 @@ import org.springframework.web.bind.annotation.*;
 import tzb.pojo.English;
 import tzb.service.EnglishService;
 import tzb.utils.Match;
+import tzb.utils.StringSplitter;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -38,9 +39,11 @@ public class EnglishQueryController {
                     String.valueOf(english.getIsDeleted())
             };
             for(Object s : nums) {
-                if(match.checkContainSubsequence((String) s, selectVal)) {
-                    englishList.add(english);
-                    break;
+                for(String ss : StringSplitter.splitByCustomDelimiters((String) s)) {
+                    if(match.checkContainSubsequence(ss, selectVal)) {
+                        englishList.add(english);
+                        break;
+                    }
                 }
             }
         }

@@ -10,4 +10,5 @@ public interface EnglishService {
     int update(English english);
     English selectById(long egId);
     List<English> selectAll();
+    List<English> getByIds(List<Long> ids);
 }

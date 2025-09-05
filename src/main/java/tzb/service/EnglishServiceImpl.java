@@ -6,6 +6,7 @@ import tzb.mapper.EnglishMapper;
 import tzb.pojo.English;
 import tzb.service.EnglishService;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -34,6 +35,10 @@ public class EnglishServiceImpl implements EnglishService {
         return englishMapper.selectById(egId);
     }
 
+    public List<English> getByIds(List<Long> ids) {
+        if (ids == null || ids.isEmpty()) return new ArrayList<>();
+        return englishMapper.selectByIds(ids);
+    }
     @Override
     public List<English> selectAll() {
         return englishMapper.selectAll();

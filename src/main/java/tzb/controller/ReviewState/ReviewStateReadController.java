@@ -21,6 +21,7 @@ public class ReviewStateReadController {
 
     @GetMapping("/user/{userId}")
     public List<ReviewState> getReviewStatesByUserId(@PathVariable long userId) {
+
         return reviewStateService.getReviewStatesByUserId(userId);
     }
 

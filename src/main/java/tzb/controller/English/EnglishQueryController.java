@@ -53,4 +53,18 @@ public class EnglishQueryController {
     public List<English> getAll() {
         return englishService.selectAll();
     }
+    // 批量获取 English
+    @PostMapping("/getByIds")
+    public List<English> getByIds(@RequestBody IdsRequest idsRequest) {
+        List<English> list = englishService.getByIds(idsRequest.getIds());
+        return list;
+    }
+
+    // DTO 用来接收前端 ids 数组
+    public static class IdsRequest {
+        private List<Long> ids;
+
+        public List<Long> getIds() { return ids; }
+        public void setIds(List<Long> ids) { this.ids = ids; }
+    }
 }

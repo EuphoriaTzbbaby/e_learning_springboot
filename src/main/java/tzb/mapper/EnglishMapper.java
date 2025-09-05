@@ -25,4 +25,14 @@ public interface EnglishMapper {
 
     @Select("SELECT * FROM english WHERE isDeleted = 0")
     List<English> selectAll();
+    @Select({
+            "<script>",
+            "SELECT * FROM english",
+            "WHERE egId IN",
+            "<foreach item='id' collection='ids' open='(' separator=',' close=')'>",
+            "#{id}",
+            "</foreach>",
+            "</script>"
+    })
+    List<English> selectByIds(@Param("ids") List<Long> ids);
 }

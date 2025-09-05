@@ -23,7 +23,7 @@ public interface ReviewStateMapper {
 
     @Update("UPDATE review_state SET " +
             "interval_days=#{intervalDays}, strength=#{strength}, difficulty=#{difficulty}, forgetting_idx=#{forgettingIdx}, repetitions=#{repetitions}, " +
-            "last_review=#{lastReview}, next_review=#{nextReview}, updateDate=NOW() " +
+            "last_review=#{lastReview}, next_review=#{nextReview}, updateDate=#{updateDate}" +
             "WHERE id=#{id}")
     int update(ReviewState reviewState);
 

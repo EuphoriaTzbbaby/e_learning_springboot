@@ -16,7 +16,8 @@ public class ReviewLogReadController {
     public ReviewLog getReviewLogByUserId(@PathVariable Long userId) {
         return reviewLogService.getReviewLogById(userId);
     }
-    @GetMapping
+
+    @GetMapping("/all")
     public List<ReviewLog> getAllReviewLogs() {
         return reviewLogService.getAllReviewLogs();
     }

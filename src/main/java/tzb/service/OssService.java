@@ -35,6 +35,7 @@ public class OssService {
         Map<String, String> configMap = new HashMap<>();
         System.out.println(configs.size());
         System.out.println(666);
+        System.out.println(configMapper.getConfigById(6));
         for (Config c : configs) {
             configMap.put(c.getConfigKey(), c.getConfigValue());
 //            System.out.println(c.getConfigKey());

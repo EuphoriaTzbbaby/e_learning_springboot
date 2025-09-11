@@ -46,7 +46,7 @@ public class OssUtil {
         for (Config c : configs) {
             configMap.put(c.getConfigKey(), c.getConfigValue());
         }
-
+        System.out.println(configMap);
         this.endpoint = configMap.get("oss.endpoint");
         this.accessKeyId = configMap.get("oss.accessKeyId");
         this.accessKeySecret = configMap.get("oss.accessKeySecret");

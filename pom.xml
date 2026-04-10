@@ -19,6 +19,7 @@
     </properties>
 
     <dependencies>
+
         <!-- MyBatis 官方 Starter -->
         <dependency>
             <groupId>org.mybatis.spring.boot</groupId>

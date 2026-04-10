@@ -53,6 +53,11 @@ public class EnglishQueryController {
     public List<English> getAll() {
         return englishService.selectAll();
     }
+    @GetMapping("/get/cww/{userId}")
+    public List<English> getByuserId(@PathVariable("userId") long userId) {
+        System.out.println(englishService.selectByuserId(userId));
+        return englishService.selectByuserId(userId);
+    }
     // 批量获取 English
     @PostMapping("/getByIds")
     public List<English> getByIds(@RequestBody IdsRequest idsRequest) {

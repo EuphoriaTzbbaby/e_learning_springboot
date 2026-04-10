@@ -15,13 +15,14 @@ public interface UsersMapper {
     List<Users> selectAll();
     @Select("select * from users where email = #{email} and password = #{password} and role = #{role}")
     Users checkLogin(Users user);
-    @Insert("INSERT INTO users (username, password, role, name, email, created_at, avatar) " +
-            "VALUES (#{username}, #{password}, #{role}, #{name}, #{email}, #{createdAt}, #{avatar})")
+    @Insert("INSERT INTO users (username, password, role, name, email, created_at, updated_at, state, avatar) " +
+            "VALUES (#{username}, #{password}, #{role}, #{name}, #{email}, #{createdAt}, #{updatedAt}, state, #{avatar})")
     @Options(useGeneratedKeys = true, keyProperty = "id")
     int insert(Users user);
 
     @Update("UPDATE users SET username = #{username}, password = #{password}, " +
-            "role = #{role}, name = #{name}, email = #{email}, created_at = #{createdAt}, avatar = #{avatar}" +
+            "role = #{role}, name = #{name}, email = #{email}, created_at = #{createdAt}, " +
+            "updated_at = #{updatedAt}, state = #{state}, avatar = #{avatar} " +
             "WHERE id = #{id}")
     int updateById(Users user);
 

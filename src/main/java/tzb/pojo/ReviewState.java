@@ -10,9 +10,7 @@ public class ReviewState {
   private long userId;
   private long egId;
   private long intervalDays;
-  private double strength;
-  private double difficulty;
-  private double forgettingIdx;
+  private double ef;
   private long repetitions;
   @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
   private java.sql.Timestamp lastReview;

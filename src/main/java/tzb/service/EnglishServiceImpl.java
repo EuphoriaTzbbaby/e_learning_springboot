@@ -43,4 +43,9 @@ public class EnglishServiceImpl implements EnglishService {
     public List<English> selectAll() {
         return englishMapper.selectAll();
     }
+
+    @Override
+    public List<English> selectByuserId(long userId) {
+        return englishMapper.selectByuserId(userId);
+    }
 }

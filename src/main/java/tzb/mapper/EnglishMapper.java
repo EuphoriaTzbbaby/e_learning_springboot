@@ -22,7 +22,8 @@ public interface EnglishMapper {
 
     @Select("SELECT * FROM english WHERE egId = #{egId}")
     English selectById(@Param("egId") long egId);
-
+    @Select("SELECT * FROM english WHERE userId = #{userId}")
+    List<English> selectByuserId(@Param("userId") long userId);
     @Select("SELECT * FROM english WHERE isDeleted = 0")
     List<English> selectAll();
     @Select({

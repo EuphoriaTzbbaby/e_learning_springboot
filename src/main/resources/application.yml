@@ -26,12 +26,15 @@ spring:
     properties:
       hibernate:
         format_sql: true
+  servlet:
+    multipart:
+          max-file-size: 100MB
+          max-request-size: 100MB
 mybatis:
   type-aliases-package: tzb.pojo
   configuration:
     map-underscore-to-camel-case: true
 #  mapper-locations: classpath:mappers/*.xml
-
 
 
 logging:

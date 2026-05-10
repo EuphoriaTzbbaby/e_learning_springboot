@@ -15,7 +15,7 @@ public interface ReviewLogMapper {
             "WHERE logId = #{logId}")
     int update(ReviewLog reviewLog);
     @Select("SELECT * FROM review_log WHERE userId = #{userId}")
-    ReviewLog selectById(Long userId);
+    List<ReviewLog> selectById(Long userId);
     @Select("SELECT * FROM review_log")
     List<ReviewLog> selectAll();
 }

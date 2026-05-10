@@ -13,7 +13,7 @@ public class ReviewLogReadController {
     @Autowired
     private ReviewLogService reviewLogService;
     @GetMapping("/{userId}")
-    public ReviewLog getReviewLogByUserId(@PathVariable Long userId) {
+    public List<ReviewLog> getReviewLogByUserId(@PathVariable Long userId) {
         return reviewLogService.getReviewLogById(userId);
     }
 

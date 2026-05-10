@@ -22,7 +22,7 @@ public class ReviewLogServiceImpl implements ReviewLogService {
         return reviewLogMapper.update(reviewLog);
     }
     @Override
-    public ReviewLog getReviewLogById(Long logId) {
+    public List<ReviewLog> getReviewLogById(Long logId) {
         return reviewLogMapper.selectById(logId);
     }
     @Override
